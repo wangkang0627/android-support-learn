@@ -5,6 +5,9 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.ViewGroup;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * @ClassName: BaseActivity
@@ -23,8 +26,19 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
-        super.setContentView(layoutResID);
+        super.setContentView(R.layout.base_layout_activity);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getLayoutInflater().inflate(layoutResID, (ViewGroup
+                ) findViewById(R.id.base_content));
     }
+
+    /**
+     * @param layoutResID 设置没有actionbar的view
+     */
+    public void setContentViewNoActionBar(@LayoutRes int layoutResID) {
+        super.setContentView(layoutResID);
+    }
+
+
 }

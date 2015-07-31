@@ -1,42 +1,53 @@
 package learn.com.android_support_learn;
 
+import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import de.greenrobot.event.EventBus;
+import learn.com.android_support_learn.event.MainActivityEvent;
 
+/**
+ * @ClassName: MainActivity
+ * @Description: 主activity
+ * @Author wk
+ * @Date: 2015/7/30 0030
+ */
 public class MainActivity extends BaseActivity {
+    private SlidingPaneLayout slidingPaneLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        setContentViewNoActionBar(R.layout.activity_main);
+        initViews();
+        EventBus.getDefault().register(this);
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    private void initViews() {
+        slidingPaneLayout = (SlidingPaneLayout) findViewById(R.id.sp);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    public void onEventMainThread(MainActivityEvent event) {
+        switch (event.code) {
+            //打开关闭侧边菜单
+            case MainActivityEvent.SlidingPane:
+                if (slidingPaneLayout.isOpen()) {
+                    slidingPaneLayout.closePane();
+                } else {
+                    slidingPaneLayout.openPane();
+                }
+                break;
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
         }
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
 
-        return super.onOptionsItemSelected(item);
     }
 }
