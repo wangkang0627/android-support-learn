@@ -1,22 +1,39 @@
-<android.support.v4.widget.SlidingPaneLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/sp"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <!-- Left side pane. (Master) -->
-    <fragment
-        android:id="@+id/leftpane"
-        android:name="learn.com.android_support_learn.fragment.LeftMenuFragment"
-        android:layout_width="190dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="left" />
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <!-- Right side page. (Slave)  -->
-    <fragment
-        android:id="@+id/rightpane"
-        android:name="learn.com.android_support_learn.fragment.RightMainFragment"
-        android:layout_width="350dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="right"
-        android:layout_weight="1" />
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize">
 
-</android.support.v4.widget.SlidingPaneLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v4.widget.SlidingPaneLayout
+        android:id="@+id/sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!-- Left side pane. (Master) -->
+        <fragment
+            android:id="@+id/leftpane"
+            android:name="learn.com.android_support_learn.fragment.LeftMenuFragment"
+            android:layout_width="190dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="left" />
+
+        <!-- Right side page. (Slave)  -->
+        <fragment
+            android:id="@+id/rightpane"
+            android:name="learn.com.android_support_learn.fragment.RightMainFragment"
+            android:layout_width="350dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:layout_weight="1" />
+
+    </android.support.v4.widget.SlidingPaneLayout>
+
+</LinearLayout>
