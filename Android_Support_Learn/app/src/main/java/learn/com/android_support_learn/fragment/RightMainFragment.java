@@ -5,6 +5,7 @@ import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -57,6 +58,8 @@ public class RightMainFragment extends BaseFragment {
             }
         });
         recyclerView.setAdapter(new RightMainAdapter(getActivity()));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+
     }
 
     @Override
