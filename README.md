@@ -31,3 +31,10 @@ github:[AndroidCodeGenerator](https://github.com/fuxiuyuan/AndroidCodeGenerator)
 效果图：![Renderings](https://github.com/layerlre/ADBWIFI/raw/master/adbwifi.jpg?raw=true)  
 插件地址：[ADBWIFI](http://plugins.jetbrains.com/plugin/7405)  
 github:[ADBWIFI](https://github.com/layerlre/ADBWIFI)  
+
+
+### 5.folding-plugin
+介绍：实现资源目录的分组
+
+效果图：![Renderings](http://7xjwjf.com1.z0.glb.clouddn.com/gif/android/Previe_Qwezxczxczxcwehjtyw.png)  
+github:[ADBWIFI](https://github.com/dmytrodanylyk/folding-plugin)  

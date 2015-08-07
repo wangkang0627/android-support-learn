@@ -12,7 +12,7 @@
         <fragment
             android:id="@+id/leftpane"
             android:name="learn.com.android_support_learn.fragment.LeftMenuFragment"
-            android:layout_width="190dp"
+            android:layout_width="200dp"
             android:layout_height="match_parent"
             android:layout_gravity="left" />
 
