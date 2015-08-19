@@ -38,3 +38,7 @@ github:[ADBWIFI](https://github.com/layerlre/ADBWIFI)
 
 效果图：![Renderings](http://7xjwjf.com1.z0.glb.clouddn.com/gif/android/Previe_Qwezxczxczxcwehjtyw.png)  
 github:[ADBWIFI](https://github.com/dmytrodanylyk/folding-plugin)  
+
+代码自动生成
+
+https://android.lineten.net/layout.php#
