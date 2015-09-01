@@ -2,8 +2,12 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.android.databinding'
 android {
     compileSdkVersion 22
-    buildToolsVersion "22.0.1"
-
+    buildToolsVersion "23.0.0"
+    compileOptions {
+        encoding "UTF-8"
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
     defaultConfig {
         applicationId "learn.com.android_support_learn"
         minSdkVersion 9

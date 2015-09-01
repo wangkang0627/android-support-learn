@@ -8,6 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.ViewGroup;
 
 import de.greenrobot.event.EventBus;
+import learn.com.android_support_learn.event.BaseEvent;
+import learn.com.android_support_learn.event.MainActivityEvent;
 
 /**
  * @ClassName: BaseActivity
@@ -21,7 +23,10 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
+    }
 
+    public <T extends BaseEvent> void onEventMainThread(T event) {
     }
 
     @Override
@@ -40,5 +45,11 @@ public class BaseActivity extends AppCompatActivity {
         super.setContentView(layoutResID);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
 
+        EventBus.getDefault().unregister(this);
+
+    }
 }

@@ -1,7 +1,6 @@
 package learn.com.android_support_learn.fragment;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.SlidingPaneLayout;
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 
 import de.greenrobot.event.EventBus;
+import learn.com.android_support_learn.adapter.BaseRecyclerAdapter;
+import learn.com.android_support_learn.model.ActivityModel;
+import learn.com.android_support_learn.utils.DataSource;
 import learn.com.android_support_learn.R;
 import learn.com.android_support_learn.adapter.RightMainAdapter;
 import learn.com.android_support_learn.event.MainActivityEvent;
@@ -57,9 +59,17 @@ public class RightMainFragment extends BaseFragment {
 
             }
         });
-        recyclerView.setAdapter(new RightMainAdapter(getActivity()));
+        final RightMainAdapter rightMainAdapter = new RightMainAdapter(getActivity());
+        rightMainAdapter.addData(DataSource.getData());
+        recyclerView.setAdapter(rightMainAdapter);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-
+        rightMainAdapter.setItemSelectListener(new BaseRecyclerAdapter.ItemSelectListener() {
+            @Override
+            public void onSelect(int position) {
+                ActivityModel activityModel = rightMainAdapter.getItem(position);
+                startActivity(new Intent(getActivity(), activityModel.aClass));
+            }
+        });
     }
 
     @Override

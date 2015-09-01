@@ -24,7 +24,6 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentViewNoActionBar(R.layout.activity_main);
         initViews();
-        EventBus.getDefault().register(this);
     }
 
     private void initViews() {
@@ -44,10 +43,5 @@ public class MainActivity extends BaseActivity {
 
         }
     }
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
 
-    }
 }
