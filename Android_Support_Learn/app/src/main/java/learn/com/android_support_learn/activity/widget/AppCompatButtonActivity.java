@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
+import android.widget.CheckedTextView;
 
 import learn.com.android_support_learn.BaseActivity;
 import learn.com.android_support_learn.R;
@@ -25,6 +26,7 @@ public class AppCompatButtonActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compat_button_layout);
         this.btncompat = (AppCompatButton) findViewById(R.id.btn_compat);
+        
         this.btncompat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

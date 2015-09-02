@@ -41,8 +41,15 @@ LinearLayoutCompat 主要作用就是兼容divider，LinearLayout的divider 属�
 ```
 效果图：![Renderings](http://7xjwjf.com1.z0.glb.clouddn.com/gif/android/sscreenshot_2015-09-02-12-28-26.png)  
 
-###AppCompatButton
-提供了api21上支持的setBackgroundTintList，Tint的意思就是着色，可以试着看看效果图，采用一张白色的星星可以实现点击后的效果，大大的减少了点击效果的资源，很多按钮都可以使用这个button来实现，setBackgroundTintMode这个属性就是着色的模式，具体可以看看这篇文章
+###AppCompatButton AppCompatTextView
+A Button which supports compatible features on older version of the platform, including:
+
++ Supports textAllCaps style attribute which works back to Eclair MR1.
++ Allows dynamic tint of it background via the background tint methods in ViewCompat.
++ Allows setting of the background tint using backgroundTint and backgroundTintMode.
++ This will automatically be used when you use Button in your layouts. You should only need to manually use this class when writing custom views.
+
+AppCompatTextView 增加属性textAllCaps（支持文本全部大写 ）,AppCompatButton 支持textAllCaps 并且提供了额外的两个属性。两个属性的意思是提供了api21上支持的setBackgroundTintList，Tint的意思就是着色，可以试着看看效果图，采用一张白色的星星可以实现点击后的效果，大大的减少了点击效果的资源，很多按钮都可以使用这个button来实现，setBackgroundTintMode这个属性就是着色的模式，具体可以看看这篇文章
  [链接](http://blog.csdn.net/t12x3456/article/details/10432935)
 
 一下是各种model的中文解释
