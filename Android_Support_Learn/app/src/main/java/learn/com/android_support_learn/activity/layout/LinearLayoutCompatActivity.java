@@ -1,8 +1,11 @@
-package learn.com.android_support_learn;
+package learn.com.android_support_learn.activity.layout;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutCompat;
+
+import learn.com.android_support_learn.BaseActivity;
+import learn.com.android_support_learn.R;
 
 /**
  * @ClassName: LinearLayoutCompat

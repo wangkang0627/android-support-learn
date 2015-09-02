@@ -2,7 +2,10 @@ package learn.com.android_support_learn.utils;
 
 import java.util.ArrayList;
 
-import learn.com.android_support_learn.LinearLayoutCompatActivity;
+import learn.com.android_support_learn.activity.widget.AppCompatButtonActivity;
+import learn.com.android_support_learn.activity.widget.DialogCompatActivity;
+import learn.com.android_support_learn.activity.layout.LinearLayoutCompatActivity;
+import learn.com.android_support_learn.activity.widget.AppCompatSpinnerActivity;
 import learn.com.android_support_learn.model.ActivityModel;
 
 /**
@@ -18,6 +21,22 @@ public class DataSource {
         activityModel.name = "LinearLayoutCompat";
         activityModel.aClass = LinearLayoutCompatActivity.class;
         arrayList.add(activityModel);
+
+/*---------------------widget-----------------------------*/
+        ActivityModel activityMode2 = new ActivityModel();
+        activityMode2.name = "DialogCompat";
+        activityMode2.aClass = DialogCompatActivity.class;
+        arrayList.add(activityMode2);
+
+        ActivityModel activityMode3 = new ActivityModel();
+        activityMode3.name = "AppCompatSpinner";
+        activityMode3.aClass = AppCompatSpinnerActivity.class;
+        arrayList.add(activityMode3);
+
+        ActivityModel activityMode4 = new ActivityModel();
+        activityMode4.name = "AppCompatButton";
+        activityMode4.aClass = AppCompatButtonActivity.class;
+        arrayList.add(activityMode4);
         return arrayList;
     }
 }
