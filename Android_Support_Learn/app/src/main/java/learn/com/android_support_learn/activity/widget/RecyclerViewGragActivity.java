@@ -28,23 +28,20 @@ import learn.com.android_support_learn.model.ImageModel;
  */
 public class RecyclerViewGragActivity extends BaseBrigeActivity<ActivityRecyclerDragLayoutBinding> {
     private RecyclerView recyclerview;
+    private RecyclerViewGragAdapter adapter;
 
     @Override
     protected int getLayoutResId() {
         return R.layout.activity_recycler_drag_layout;
     }
 
-    @Override
-    protected void loadBindFinish() {
-        super.loadBindFinish();
-        setVarible(BR.adapter, new RecyclerViewGragAdapter(this, this.recyclerview));
-    }
 
     @Override
     protected void initViews() {
         setBackAction("RecyclerViewGragActivity");
         this.recyclerview = (RecyclerView) findViewById(R.id.recycler_view);
-        RecyclerViewGragAdapter adapter = (RecyclerViewGragAdapter) this.recyclerview.getAdapter();
+        adapter = new RecyclerViewGragAdapter(this, this.recyclerview);
+        setVarible(BR.adapter, adapter);
         //正对item大小变得item进行优化
         this.recyclerview.setHasFixedSize(true);
         List<ImageModel> data = new ArrayList<>();
