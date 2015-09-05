@@ -4,9 +4,12 @@ import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.bindlibrary.databind.base.activity.BaseBindActivity;
 
@@ -44,12 +47,32 @@ public abstract class BaseBrigeActivity<T extends ViewDataBinding> extends BaseB
         setSupportActionBar(toolbar);
         base_content = (FrameLayout) findViewById(R.id.base_content);
         base_content.addView(view);
+
+    }
+    //设置返回按钮
+    protected void setBackAction(String str)
+    {
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle(str);
+    }
+    protected void setBackAction(int res_str)
+    {
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle(res_str);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==android.R.id.home)
+            onBackPressed();
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
         EventBus.getDefault().unregister(this);
 
     }

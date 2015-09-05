@@ -35,10 +35,15 @@ public class RecyclerViewGragActivity extends BaseBrigeActivity<ActivityRecycler
     }
 
     @Override
-    protected void initViews() {
-
-        this.recyclerview = (RecyclerView) findViewById(R.id.recycler_view);
+    protected void loadBindFinish() {
+        super.loadBindFinish();
         setVarible(BR.adapter, new RecyclerViewGragAdapter(this, this.recyclerview));
+    }
+
+    @Override
+    protected void initViews() {
+        setBackAction("RecyclerViewGragActivity");
+        this.recyclerview = (RecyclerView) findViewById(R.id.recycler_view);
         RecyclerViewGragAdapter adapter = (RecyclerViewGragAdapter) this.recyclerview.getAdapter();
         //正对item大小变得item进行优化
         this.recyclerview.setHasFixedSize(true);

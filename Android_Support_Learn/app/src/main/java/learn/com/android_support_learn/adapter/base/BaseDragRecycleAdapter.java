@@ -24,6 +24,7 @@ public abstract class BaseDragRecycleAdapter<T, VH extends BaseRecyclerAdapter.V
         this.mRecyclerView = recyclerView;
         mCallback = createCallback();
         mItemTouchHelper = new ItemTouchHelper(mCallback);
+        mItemTouchHelper.attachToRecyclerView(mRecyclerView);
     }
 
     public int getMovementFlags(RecyclerView recyclerView,

@@ -22,8 +22,9 @@ public abstract class BaseBindActivity<T extends ViewDataBinding> extends AppCom
         this.viewDataBind = DataBindingUtil.setContentView(this, getLayoutResId());
         View view = this.viewDataBind.getRoot();
         setContentView(view);
-        initViews();
+        loadBindFinish();
         viewDataBind.executePendingBindings();
+        initViews();
     }
 
     public void setVarible(int id, Object obj) {
@@ -34,6 +35,14 @@ public abstract class BaseBindActivity<T extends ViewDataBinding> extends AppCom
      * @return 布局id
      */
     protected abstract int getLayoutResId();
+
+    /**
+     * 加载布局完事,可以进行一些布局变量的设置
+     */
+    protected void loadBindFinish() {
+    }
+
+    ;
 
     protected abstract void initViews();
 }
