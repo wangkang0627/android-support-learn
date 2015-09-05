@@ -13,6 +13,7 @@ import android.widget.ImageView;
 
 import learn.com.android_support_learn.BR;
 import learn.com.android_support_learn.R;
+import learn.com.android_support_learn.adapter.base.BaseRecyclerAdapter;
 import learn.com.android_support_learn.model.ActivityModel;
 
 /**

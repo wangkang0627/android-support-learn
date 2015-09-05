@@ -1,20 +1,14 @@
 package learn.com.android_support_learn.databind;
 
-import android.content.Context;
 import android.databinding.BindingAdapter;
 import android.support.annotation.IntDef;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.widget.AdapterView;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-import java.util.Collection;
-
-import learn.com.android_support_learn.adapter.BaseRecyclerAdapter;
-import learn.com.android_support_learn.adapter.RecyclerViewGridAdapter;
 
 /**
  * @ClassName: LayoutManagerFactory

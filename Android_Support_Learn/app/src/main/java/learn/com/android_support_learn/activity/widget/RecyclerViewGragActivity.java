@@ -10,9 +10,13 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
+import learn.com.android_support_learn.BR;
 import learn.com.android_support_learn.BaseActivity;
+import learn.com.android_support_learn.BaseBrigeActivity;
 import learn.com.android_support_learn.R;
+import learn.com.android_support_learn.adapter.RecyclerViewGragAdapter;
 import learn.com.android_support_learn.adapter.RecyclerViewGridAdapter;
+import learn.com.android_support_learn.databinding.ActivityRecyclerDragLayoutBinding;
 import learn.com.android_support_learn.databinding.ActivityRightRecyclerLayoutBinding;
 import learn.com.android_support_learn.model.ImageModel;
 
@@ -22,25 +26,26 @@ import learn.com.android_support_learn.model.ImageModel;
  * @Author wk
  * @Date 2015/9/4 0004
  */
-public class RecyclerViewGragActivity extends BaseActivity {
+public class RecyclerViewGragActivity extends BaseBrigeActivity<ActivityRecyclerDragLayoutBinding> {
     private RecyclerView recyclerview;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        ActivityRightRecyclerLayoutBinding activityRightRecyclerLayoutBinding = DataBindingUtil.setContentView(this, R.layout.activity_right_recycler_layout);
-        activityRightRecyclerLayoutBinding.setAdapter(new RecyclerViewGridAdapter(this));
-        activityRightRecyclerLayoutBinding.executePendingBindings();
-        View view = activityRightRecyclerLayoutBinding.getRoot();
-        setContentView(view);
-        ActionBar actionBar = getSupportActionBar();
-        this.recyclerview  = (RecyclerView) view.findViewById(R.id.recycler_view);
-        RecyclerViewGridAdapter adapter = (RecyclerViewGridAdapter) this.recyclerview.getAdapter();
+    protected int getLayoutResId() {
+        return R.layout.activity_recycler_drag_layout;
+    }
+
+    @Override
+    protected void initViews() {
+
+        this.recyclerview = (RecyclerView) findViewById(R.id.recycler_view);
+        setVarible(BR.adapter, new RecyclerViewGragAdapter(this, this.recyclerview));
+        RecyclerViewGragAdapter adapter = (RecyclerViewGragAdapter) this.recyclerview.getAdapter();
+        //正对item大小变得item进行优化
+        this.recyclerview.setHasFixedSize(true);
         List<ImageModel> data = new ArrayList<>();
-        for (int i = 0;i<100;i++)
-        {
+        for (int i = 0; i < 100; i++) {
             ImageModel imageModel = new ImageModel();
-            imageModel.img = i+"";
+            imageModel.img = i + "";
             data.add(imageModel);
         }
         adapter.addData(data);

@@ -3,16 +3,15 @@ package learn.com.android_support_learn.adapter;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import learn.com.android_support_learn.BR;
 import learn.com.android_support_learn.R;
+import learn.com.android_support_learn.adapter.base.BaseRecyclerAdapter;
 import learn.com.android_support_learn.model.ImageModel;
 
 /**

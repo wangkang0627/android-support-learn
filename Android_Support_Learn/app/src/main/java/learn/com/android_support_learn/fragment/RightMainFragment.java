@@ -14,7 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import de.greenrobot.event.EventBus;
-import learn.com.android_support_learn.adapter.BaseRecyclerAdapter;
+import learn.com.android_support_learn.adapter.base.BaseRecyclerAdapter;
 import learn.com.android_support_learn.model.ActivityModel;
 import learn.com.android_support_learn.utils.DataSource;
 import learn.com.android_support_learn.R;

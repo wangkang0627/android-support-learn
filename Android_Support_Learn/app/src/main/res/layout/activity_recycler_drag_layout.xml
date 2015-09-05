@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-</LinearLayout>
+    <data>
+
+        <variable
+            name="adapter"
+            type="learn.com.android_support_learn.adapter.RecyclerViewGragAdapter" />
+        <import type="learn.com.android_support_learn.databind.RecycleFactory" />
+
+        <import type="android.support.v7.widget.StaggeredGridLayoutManager" />
+    </data>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbarStyle="insideOverlay"
+        android:scrollbars="horizontal|vertical"
+        app:adapter="@{adapter}"
+        app:layoutManager="@{RecycleFactory.linear()}" />
+
+</layout>

@@ -24,14 +24,12 @@ public abstract class BaseRecyclerAdapter<T, VH extends BaseRecyclerAdapter.View
     public void addData(List<T> data) {
         if (data != null) {
             this.mDatas.addAll(data);
-            notifyDataSetChanged();
         }
     }
 
     public void refreshData(List<T> data) {
         if (data != null) {
             this.mDatas.addAll(data);
-            notifyDataSetChanged();
         }
     }
 

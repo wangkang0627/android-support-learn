@@ -6,6 +6,7 @@ import learn.com.android_support_learn.activity.widget.AppCompatButtonActivity;
 import learn.com.android_support_learn.activity.widget.DialogCompatActivity;
 import learn.com.android_support_learn.activity.layout.LinearLayoutCompatActivity;
 import learn.com.android_support_learn.activity.widget.AppCompatSpinnerActivity;
+import learn.com.android_support_learn.activity.widget.RecyclerViewGragActivity;
 import learn.com.android_support_learn.activity.widget.RecyclerViewGridActivity;
 import learn.com.android_support_learn.model.ActivityModel;
 
@@ -44,6 +45,12 @@ public class DataSource {
         activityMode5.name = "RecyclerViewGridActivity";
         activityMode5.aClass = RecyclerViewGridActivity.class;
         arrayList.add(activityMode5);
+
+
+        ActivityModel activityMode6 = new ActivityModel();
+        activityMode6.name = "RecyclerViewGragActivity";
+        activityMode6.aClass = RecyclerViewGragActivity.class;
+        arrayList.add(activityMode6);
         return arrayList;
     }
 }

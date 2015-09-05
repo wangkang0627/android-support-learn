@@ -30,7 +30,8 @@ LinearLayoutCompat 主要作用就是兼容divider，LinearLayout的divider 属�
 
 ##Widget
 ###RecyclerView 瀑布流的用法
-现在的RecyclerView是直接支持瀑布流的用法的，可以完全采用原生包里面的类，通过简单的配置来实现瀑布流。StaggeredGridLayoutManager，并且支持水平的瀑布流。具体使用方式如下
+现在的RecyclerView是直接支持瀑布流的用法的，可以完全采用原生包里面的类，通过简单的配置来实现瀑布流。StaggeredGridLayoutManager，并且支持水平的瀑布流。具体使用方式如下：
+
 ```java
 //指定布局管理器
 recyclerview.setLayoutManager(new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.HORIZONTAL));
