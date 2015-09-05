@@ -21,6 +21,8 @@
         <activity android:name=".activity.widget.DialogCompatActivity"></activity>
         <activity android:name=".activity.widget.AppCompatSpinnerActivity"></activity>
         <activity android:name=".activity.widget.AppCompatButtonActivity"></activity>
+        <activity android:name=".activity.widget.RecyclerViewGridActivity"></activity>
+
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

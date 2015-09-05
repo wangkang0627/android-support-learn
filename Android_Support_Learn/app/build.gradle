@@ -10,7 +10,7 @@ android {
     }
     defaultConfig {
         applicationId "learn.com.android_support_learn"
-        minSdkVersion 9
+        minSdkVersion 13
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
@@ -32,5 +32,6 @@ dependencies {
     compile 'com.facebook.fresco:fresco:0.6.0+'
     compile 'com.android.support:support-v4:22.2.0'
     compile 'com.android.support:palette-v7:22.2.0'
+    compile 'com.android.support:support-v13:22.+'
     compile 'de.greenrobot:eventbus:2.4.0'
 }

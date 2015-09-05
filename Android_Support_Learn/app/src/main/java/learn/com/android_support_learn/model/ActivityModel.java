@@ -1,5 +1,6 @@
 package learn.com.android_support_learn.model;
 
+import android.databinding.Bindable;
 import android.databinding.BindingAdapter;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
@@ -25,14 +26,19 @@ import learn.com.android_support_learn.PApplication;
  * @Author wk
  * @Date 2015/9/1 0001
  */
-public class ActivityModel implements Serializable{
+public class ActivityModel extends BaseModel implements Serializable {
+
+    @Bindable
     public String img;
+    @Bindable
     public String name;
+
     public Class aClass;
 
     public String getImg() {
         return img;
     }
+
     @BindingAdapter({"bind:url"})
     public static void loadImage(final ImageView view, String url) {
         DataSource<CloseableReference<CloseableImage>> dataSource = Fresco.getImagePipeline().fetchDecodedImage(ImageRequest.fromUri(Uri.parse(url)), PApplication.getInstance());
@@ -45,6 +51,7 @@ public class ActivityModel implements Serializable{
                                          }
                                      });
                                  }
+
                                  @Override
                                  public void onFailureImpl(DataSource dataSource) {
                                      // No cleanup required here.

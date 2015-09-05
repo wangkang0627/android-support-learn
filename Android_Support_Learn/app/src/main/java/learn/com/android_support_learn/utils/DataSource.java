@@ -6,6 +6,7 @@ import learn.com.android_support_learn.activity.widget.AppCompatButtonActivity;
 import learn.com.android_support_learn.activity.widget.DialogCompatActivity;
 import learn.com.android_support_learn.activity.layout.LinearLayoutCompatActivity;
 import learn.com.android_support_learn.activity.widget.AppCompatSpinnerActivity;
+import learn.com.android_support_learn.activity.widget.RecyclerViewGridActivity;
 import learn.com.android_support_learn.model.ActivityModel;
 
 /**
@@ -37,6 +38,12 @@ public class DataSource {
         activityMode4.name = "AppCompatButton";
         activityMode4.aClass = AppCompatButtonActivity.class;
         arrayList.add(activityMode4);
+
+
+        ActivityModel activityMode5 = new ActivityModel();
+        activityMode5.name = "RecyclerViewGridActivity";
+        activityMode5.aClass = RecyclerViewGridActivity.class;
+        arrayList.add(activityMode5);
         return arrayList;
     }
 }

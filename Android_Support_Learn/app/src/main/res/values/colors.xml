@@ -3,4 +3,6 @@
     <color name="style_color_primary">#009688</color>
     <color name="style_color_primary_dark">#009688</color>
     <color name="asl_them_color">#009688</color>
+    <color name="blue">@android:color/holo_blue_light</color>
+    <color name="red">@android:color/holo_red_light</color>
 </resources>

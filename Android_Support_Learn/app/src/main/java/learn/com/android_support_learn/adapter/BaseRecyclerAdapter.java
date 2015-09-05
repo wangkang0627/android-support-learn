@@ -1,11 +1,16 @@
 package learn.com.android_support_learn.adapter;
 
+import android.content.Context;
+import android.databinding.ObservableArrayList;
+import android.databinding.ObservableList;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import learn.com.android_support_learn.model.ImageModel;
 
 /**
  * @ClassName: BaseRecyclerAdapter
@@ -14,8 +19,11 @@ import java.util.List;
  * @Date 2015/9/1 0001
  */
 public abstract class BaseRecyclerAdapter<T, VH extends BaseRecyclerAdapter.ViewHolder> extends RecyclerView.Adapter<VH> {
-    public ArrayList<T> mDatas = new ArrayList<>();
-
+    public ObservableList<T> mDatas = new ObservableArrayList<T>();
+    protected Context mContext;
+    public BaseRecyclerAdapter(Context context){
+        this.mContext = context;
+    }
     public void addData(List<T> data) {
         if (data != null) {
             this.mDatas.addAll(data);

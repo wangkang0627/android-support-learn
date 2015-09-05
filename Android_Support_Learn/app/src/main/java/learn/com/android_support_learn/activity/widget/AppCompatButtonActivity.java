@@ -26,7 +26,7 @@ public class AppCompatButtonActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compat_button_layout);
         this.btncompat = (AppCompatButton) findViewById(R.id.btn_compat);
-        
+
         this.btncompat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
