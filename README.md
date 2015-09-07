@@ -65,18 +65,69 @@ public BaseDragRecycleAdapter(Context context, RecyclerView recyclerView) {
     mItemTouchHelper.attachToRecyclerView(mRecyclerView);
 }
 
-    
+
+//滑动支持
+ //滑动支持
+protected int getMovementFlags(RecyclerView recyclerView,
+                               RecyclerView.ViewHolder viewHolder) {
+	//滑动支持向左和向右 0表示不支持的方向 mSwipLeftEnabled 是成员变量里面可以动态设置
+    int swipeFlag = (mSwipLeftEnabled ? ItemTouchHelper.LEFT : 0) | (mSwipRightEnabled ? ItemTouchHelper.RIGHT : 0);
+    //上下拖拽的支持 
+    int dragFlag = (mDragUpEnabled ? ItemTouchHelper.UP : 0) |
+            (mDragDownEnabled ? ItemTouchHelper.DOWN : 0);
+    return mCallback.makeMovementFlags(dragFlag
+            , swipeFlag);
+}
+
+/**
+ * 上下移动的时候调用
+ *
+ * @param from 点击的position
+ * @param to   放入的position
+ */
+protected boolean move(int from, int to) {
+    T prev = mDatas.remove(from);
+    mDatas.add(to > from ? to - 1 : to, prev);
+    notifyItemMoved(from, to);
+    return true;
+}
+//侧滑后进行删除
+public void delete(int position) {
+    mDatas.remove(position);
+    notifyItemRemoved(position);
+}
+
+/**
+ * @param viewHolder
+ * @param direction  方向
+ */
+protected void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+    if (direction == ItemTouchHelper.RIGHT) {
+        Log.d(TAG, "onSwiped:RIGHT");
+    } else if (direction == ItemTouchHelper.LEFT) {
+        Log.d(TAG, "onSwiped:LEFT");
+    }
+    delete(viewHolder.getAdapterPosition());//删除
+}
+
+protected boolean onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+    return false;
+}
+
+protected boolean onChildDrawOver(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+    return false;
+}
 
 public ItemTouchHelper.Callback createCallback() {
     return new ItemTouchHelper.Callback() {
-
+        //获取滑动的几种方案
         @Override
         public int getMovementFlags(RecyclerView recyclerView,
                                     RecyclerView.ViewHolder viewHolder) {
             return BaseDragRecycleAdapter.this.getMovementFlags(recyclerView, viewHolder);
         }
 
-
+		
         @Override
         public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder,
                               RecyclerView.ViewHolder target) {
@@ -130,12 +181,12 @@ public ItemTouchHelper.Callback createCallback() {
             super.onChildDrawOver(c, recyclerView, viewHolder, dX, dY, actionState,
                     isCurrentlyActive);
         }
-
+        //是否支持长按拖拽
         @Override
         public boolean isLongPressDragEnabled() {
             return longPressDragEnabled;
         }
-
+		//是否支持滑动删除
         @Override
         public boolean isItemViewSwipeEnabled() {
             return itemViewSwipeEnabled;
