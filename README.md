@@ -67,7 +67,6 @@ public BaseDragRecycleAdapter(Context context, RecyclerView recyclerView) {
 
 
 //滑动支持
- //滑动支持
 protected int getMovementFlags(RecyclerView recyclerView,
                                RecyclerView.ViewHolder viewHolder) {
 	//滑动支持向左和向右 0表示不支持的方向 mSwipLeftEnabled 是成员变量里面可以动态设置

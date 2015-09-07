@@ -42,6 +42,10 @@ public class RecyclerViewGragActivity extends BaseBrigeActivity<ActivityRecycler
         setBackAction("RecyclerViewGragActivity");
         this.recyclerview = (RecyclerView) findViewById(R.id.recycler_view);
         adapter = new RecyclerViewGragAdapter(this, this.recyclerview);
+        //开启滑动删除
+        adapter.setItemViewSwipeEnabled(true);
+        //开启长按滑动
+        adapter.setLongPressDragEnabled(true);
         setVarible(BR.adapter, adapter);
         //正对item大小变得item进行优化
         this.recyclerview.setHasFixedSize(true);

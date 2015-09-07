@@ -24,8 +24,8 @@ public abstract class BaseDragRecycleAdapter<T, VH extends BaseRecyclerAdapter.V
     protected boolean mDragDownEnabled = true;//下滑动
     protected boolean mSwipLeftEnabled = true;//左滑动
     protected boolean mSwipRightEnabled = true;//右滑动
-    protected boolean longPressDragEnabled = true;//是否可以长按进行滑动
-    protected boolean itemViewSwipeEnabled = true;//是否支持左右滑动
+    protected boolean longPressDragEnabled = false;//是否可以长按进行滑动
+    protected boolean itemViewSwipeEnabled = false;//是否支持左右滑动
 
     public BaseDragRecycleAdapter(Context context, RecyclerView recyclerView) {
         super(context);
@@ -40,9 +40,10 @@ public abstract class BaseDragRecycleAdapter<T, VH extends BaseRecyclerAdapter.V
     protected int getMovementFlags(RecyclerView recyclerView,
                                    RecyclerView.ViewHolder viewHolder) {
         int swipeFlag = (mSwipLeftEnabled ? ItemTouchHelper.LEFT : 0) | (mSwipRightEnabled ? ItemTouchHelper.RIGHT : 0);//滑动支持向左和向右
-        return mCallback.makeMovementFlags(
-                (mDragUpEnabled ? ItemTouchHelper.UP : 0) |
-                        (mDragDownEnabled ? ItemTouchHelper.DOWN : 0), swipeFlag);
+        int dragFlag = (mDragUpEnabled ? ItemTouchHelper.UP : 0) |
+                (mDragDownEnabled ? ItemTouchHelper.DOWN : 0);
+        return mCallback.makeMovementFlags(dragFlag
+                , swipeFlag);
     }
 
     /**
@@ -73,6 +74,7 @@ public abstract class BaseDragRecycleAdapter<T, VH extends BaseRecyclerAdapter.V
         } else if (direction == ItemTouchHelper.LEFT) {
             Log.d(TAG, "onSwiped:LEFT");
         }
+        delete(viewHolder.getAdapterPosition());//删除
     }
 
     protected boolean onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
@@ -175,5 +177,51 @@ public abstract class BaseDragRecycleAdapter<T, VH extends BaseRecyclerAdapter.V
         };
     }
 
+    public boolean ismDragUpEnabled() {
+        return mDragUpEnabled;
+    }
 
+    public void setmDragUpEnabled(boolean mDragUpEnabled) {
+        this.mDragUpEnabled = mDragUpEnabled;
+    }
+
+    public boolean ismDragDownEnabled() {
+        return mDragDownEnabled;
+    }
+
+    public void setmDragDownEnabled(boolean mDragDownEnabled) {
+        this.mDragDownEnabled = mDragDownEnabled;
+    }
+
+    public boolean ismSwipLeftEnabled() {
+        return mSwipLeftEnabled;
+    }
+
+    public void setmSwipLeftEnabled(boolean mSwipLeftEnabled) {
+        this.mSwipLeftEnabled = mSwipLeftEnabled;
+    }
+
+    public boolean ismSwipRightEnabled() {
+        return mSwipRightEnabled;
+    }
+
+    public void setmSwipRightEnabled(boolean mSwipRightEnabled) {
+        this.mSwipRightEnabled = mSwipRightEnabled;
+    }
+
+    public boolean isLongPressDragEnabled() {
+        return longPressDragEnabled;
+    }
+
+    public void setLongPressDragEnabled(boolean longPressDragEnabled) {
+        this.longPressDragEnabled = longPressDragEnabled;
+    }
+
+    public boolean isItemViewSwipeEnabled() {
+        return itemViewSwipeEnabled;
+    }
+
+    public void setItemViewSwipeEnabled(boolean itemViewSwipeEnabled) {
+        this.itemViewSwipeEnabled = itemViewSwipeEnabled;
+    }
 }
