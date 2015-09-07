@@ -11,7 +11,7 @@ import android.support.v7.widget.helper.ItemTouchHelper;
  * @Author wk
  * @Date 2015/9/5 0005
  */
-public abstract class BaseDragRecycleAdapter<T, VH extends BaseRecyclerAdapter.ViewHolder> extends BaseRecyclerAdapter<T, VH> {
+public abstract class BaseDragRecycleAdapter<T, VH extends BaseBindRecyclerAdapter.ViewHolder> extends BaseBindRecyclerAdapter<T, VH> {
 
     protected ItemTouchHelper mItemTouchHelper;
     protected ItemTouchHelper.Callback mCallback;

@@ -15,10 +15,10 @@ import java.util.List;
  * @Author wk
  * @Date 2015/9/1 0001
  */
-public abstract class BaseRecyclerAdapter<T, VH extends BaseRecyclerAdapter.ViewHolder> extends RecyclerView.Adapter<VH> {
+public abstract class BaseBindRecyclerAdapter<T, VH extends BaseBindRecyclerAdapter.ViewHolder> extends RecyclerView.Adapter<VH> {
     public ObservableList<T> mDatas = new ObservableArrayList<T>();
     protected Context mContext;
-    public BaseRecyclerAdapter(Context context){
+    public BaseBindRecyclerAdapter(Context context){
         this.mContext = context;
     }
     public void addData(List<T> data) {
