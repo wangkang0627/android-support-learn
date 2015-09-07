@@ -29,7 +29,7 @@ LinearLayoutCompat 主要作用就是兼容divider，LinearLayout的divider 属�
 ```
 
 ##Widget
-###RecyclerView 瀑布流的用法
+###1.RecyclerView 瀑布流的用法
 现在的RecyclerView是直接支持瀑布流的用法的，可以完全采用原生包里面的类，通过简单的配置来实现瀑布流。StaggeredGridLayoutManager，并且支持水平的瀑布流。具体使用方式如下：
 
 ```java
@@ -48,8 +48,9 @@ holder.iv_image.setLayoutParams(params);
 
 ![Renderings](http://7xjwjf.com1.z0.glb.clouddn.com/gif/android/144144339861y2zd6v_tuhaokuai_com_0x0.png)  
 
+------
 
-###AlertDialog
+###2.AlertDialog
 提供了Material Design的dialog
 ```java
  android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(DialogCompatActivity.this);
@@ -61,7 +62,9 @@ holder.iv_image.setLayoutParams(params);
 ```
 效果图：![Renderings](http://7xjwjf.com1.z0.glb.clouddn.com/gif/android/sscreenshot_2015-09-02-12-28-26.png)  
 
-###AppCompatButton AppCompatTextView
+------
+
+###3.AppCompatButton AppCompatTextView
 A Button which supports compatible features on older version of the platform, including:
 
 + Supports textAllCaps style attribute which works back to Eclair MR1.
