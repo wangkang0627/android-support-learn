@@ -29,7 +29,7 @@ LinearLayoutCompat 主要作用就是兼容divider，LinearLayout的divider 属�
 ```
 
 ##Widget
-###1.RecyclerView 瀑布流的用法
+###1.1RecyclerView 瀑布流的用法
 现在的RecyclerView是直接支持瀑布流的用法的，可以完全采用原生包里面的类，通过简单的配置来实现瀑布流。StaggeredGridLayoutManager，并且支持水平的瀑布流。具体使用方式如下：
 
 ```java
@@ -47,6 +47,114 @@ holder.iv_image.setLayoutParams(params);
 如下效果图效果图：
 
 ![Renderings](http://7xjwjf.com1.z0.glb.clouddn.com/gif/android/144144339861y2zd6v_tuhaokuai_com_0x0.png)  
+
+
+###1.2RecyclerView 滑动删除，长按排序
+
+现在的RecyclerView支持一些新特性，比如滑动删除和长按排序。RecyclerView通过与ItemTouchHelper的结合来实现这个功能，通过简单的初始化：
+
+```java
+
+public BaseDragRecycleAdapter(Context context, RecyclerView recyclerView) {
+    super(context);
+    TAG = getClass().getName();
+    this.mRecyclerView = recyclerView;
+    mCallback = createCallback();
+    mItemTouchHelper = new ItemTouchHelper(mCallback);
+    //绑定recyclerview
+    mItemTouchHelper.attachToRecyclerView(mRecyclerView);
+}
+
+    
+
+public ItemTouchHelper.Callback createCallback() {
+    return new ItemTouchHelper.Callback() {
+
+        @Override
+        public int getMovementFlags(RecyclerView recyclerView,
+                                    RecyclerView.ViewHolder viewHolder) {
+            return BaseDragRecycleAdapter.this.getMovementFlags(recyclerView, viewHolder);
+        }
+
+
+        @Override
+        public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder,
+                              RecyclerView.ViewHolder target) {
+            return BaseDragRecycleAdapter.this.move(viewHolder.getAdapterPosition(), target.getAdapterPosition());
+        }
+
+        @Override
+        public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+            BaseDragRecycleAdapter.this.onSwiped(viewHolder, direction);
+        }
+
+        @Override
+        public void onSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState) {
+            //  super.onSelectedChanged(viewHolder, actionState);
+            BaseDragRecycleAdapter.this.onSelectedChanged(viewHolder, actionState);
+        }
+
+        @Override
+        public void onChildDraw(Canvas c, RecyclerView recyclerView,
+                                RecyclerView.ViewHolder viewHolder,
+                                float dX, float dY, int actionState, boolean isCurrentlyActive) {
+
+            if (BaseDragRecycleAdapter.this.onChildDraw(c, recyclerView, viewHolder,
+                    dX, dY, actionState, isCurrentlyActive)) {
+                return;
+            }
+            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState,
+                    isCurrentlyActive);
+        }
+
+
+        /**
+         *  Most of the time, you only need to override onChildDraw but due to limitations of platform prior
+         *  to Honeycomb, you may need to implement onChildDrawOver as well.
+         * @param c
+         * @param recyclerView
+         * @param viewHolder
+         * @param dX
+         * @param dY
+         * @param actionState
+         * @param isCurrentlyActive
+         */
+        @Override
+        public void onChildDrawOver(Canvas c, RecyclerView recyclerView,
+                                    RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState,
+                                    boolean isCurrentlyActive) {
+            if (BaseDragRecycleAdapter.this.onChildDrawOver(c, recyclerView, viewHolder,
+                    dX, dY, actionState, isCurrentlyActive)) {
+                return;
+            }
+            super.onChildDrawOver(c, recyclerView, viewHolder, dX, dY, actionState,
+                    isCurrentlyActive);
+        }
+
+        @Override
+        public boolean isLongPressDragEnabled() {
+            return longPressDragEnabled;
+        }
+
+        @Override
+        public boolean isItemViewSwipeEnabled() {
+            return itemViewSwipeEnabled;
+        }
+
+        @Override
+        public void clearView(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
+            super.clearView(recyclerView, viewHolder);
+            //ItemTouchHelperActivity.this.clearView(viewHolder);
+        }
+    };
+}
+
+```
+
+如下效果图效果图：
+
+![Renderings](http://7xjwjf.com1.z0.glb.clouddn.com/gif/android/1441633004vwbtswj4_tuhaokuai_com_0x0.gif)  
+
 
 ------
 
