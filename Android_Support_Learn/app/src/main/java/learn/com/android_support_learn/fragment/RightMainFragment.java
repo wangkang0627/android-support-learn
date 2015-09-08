@@ -65,10 +65,12 @@ public class RightMainFragment extends BaseFragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         rightMainAdapter.setItemSelectListener(new BaseRecyclerAdapter.ItemSelectListener() {
             @Override
-            public void onSelect(int position) {
+            public void onSelect(RecyclerView.ViewHolder viewHolder, int position) {
                 ActivityModel activityModel = rightMainAdapter.getItem(position);
                 startActivity(new Intent(getActivity(), activityModel.aClass));
             }
+
+
         });
     }
 

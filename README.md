@@ -1,6 +1,6 @@
 # android-support-learn
 ----------------------
-###这个项目主要是介绍一些相关support包的作用，尽量能够采用官方提供的包进行开发，少写很多不必要的代码
+###这个项目主要是介绍一些相关support包的作用，尽量能够采用官方提供的包进行开发，少写很多不必要的代码。下面所介绍的功能都能够在Android_Support_Learn中的app那个项目里面
 
 
 ##布局
@@ -206,6 +206,21 @@ public ItemTouchHelper.Callback createCallback() {
 ![Renderings](http://7xjwjf.com1.z0.glb.clouddn.com/gif/android/1441633004vwbtswj4_tuhaokuai_com_0x0.gif)  
 
 
+
+
+
+###1.3RecyclerView item动画
+RecyclerView支持更新单个的item，这样处理起来性能就会比整体更新高很多，只不过这个性能差别并不是明显，几乎可以忽略。但是提供的几个方法能够提供很好的交互效果，当对单个数据进行插入，移动，修改的时候能够自动提供动画，这个动画可以通过继承RecyclerView的RecyclerView.ItemAnimator 进行重写，当然他也有自己的默认动画。默认不设置就是默认动画
+```java
+
+  adapter.notifyItemInserted(2);
+  adapter.notifyItemRemoved(position);
+  adapter.notifyItemChanged(position);
+
+```
+
+效果图：![Renderings](http://7xjwjf.com1.z0.glb.clouddn.com/gif/android/1441682339hfx2hhg7_tuhaokuai_com_0x0.gif)  
+
 ------
 
 ###2.AlertDialog
@@ -230,7 +245,7 @@ A Button which supports compatible features on older version of the platform, in
 + Allows setting of the background tint using backgroundTint and backgroundTintMode.
 + This will automatically be used when you use Button in your layouts. You should only need to manually use this class when writing custom views.
 
-AppCompatTextView 增加属性textAllCaps（支持文本全部大写 ）,AppCompatButton 支持textAllCaps 并且提供了额外的两个属性。两个属性的意思是提供了api21上支持的setBackgroundTintList，Tint的意思就是着色，可以试着看看效果图，采用一张白色的星星可以实现点击后的效果，大大的减少了点击效果的资源，很多按钮都可以使用这个button来实现，setBackgroundTintMode这个属性就是着色的模式，具体可以看看这篇文章
+AppCompatTextView 增加属性textAllCaps（支持文本全部大写 ）,AppCompatButton 支持textAllCaps 并且提供了额外的两个属性。两个属性的意思是提供了api21上支持的setBackgroundTintList，Tint的意思就是着色，可以试着看看效果图，采用一张白色的星星可以实现点击后的效果，大大的减少了点击效果的资源，很多按钮都可以使用这个button来实现，setBackgroundTintMode这个属性就是着色的模式，简单的来说他可以使一个张白色的图标变成一张红色的图标，从而减少了资源的使用。具体可以看看这篇文章
  [链接](http://blog.csdn.net/t12x3456/article/details/10432935)
 
 一下是各种model的中文解释

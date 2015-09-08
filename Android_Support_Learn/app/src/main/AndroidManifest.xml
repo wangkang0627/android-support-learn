@@ -23,6 +23,7 @@
         <activity android:name=".activity.widget.AppCompatButtonActivity"></activity>
         <activity android:name=".activity.widget.RecyclerViewGridActivity"></activity>
         <activity android:name=".activity.widget.RecyclerViewGragActivity"></activity>
+        <activity android:name=".activity.widget.RecyclerViewAnimateActivity"></activity>
 
     </application>
     <uses-permission android:name="android.permission.INTERNET" />

@@ -3,8 +3,10 @@ package learn.com.android_support_learn;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -52,7 +54,26 @@ public class BaseActivity extends AppCompatActivity {
     public void setContentViewNoActionBar(@LayoutRes int layoutResID) {
         super.setContentView(layoutResID);
     }
+    //设置返回按钮
+    protected void setBackAction(String str)
+    {
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle(str);
+    }
+    protected void setBackAction(int res_str)
+    {
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle(res_str);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==android.R.id.home)
+            onBackPressed();
+        return super.onOptionsItemSelected(item);
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();

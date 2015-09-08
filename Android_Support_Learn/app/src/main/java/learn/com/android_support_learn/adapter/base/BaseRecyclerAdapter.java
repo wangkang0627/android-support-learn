@@ -18,9 +18,11 @@ import java.util.List;
 public abstract class BaseRecyclerAdapter<T, VH extends BaseRecyclerAdapter.ViewHolder> extends RecyclerView.Adapter<VH> {
     public ObservableList<T> mDatas = new ObservableArrayList<T>();
     protected Context mContext;
-    public BaseRecyclerAdapter(Context context){
+
+    public BaseRecyclerAdapter(Context context) {
         this.mContext = context;
     }
+
     public void addData(List<T> data) {
         if (data != null) {
             this.mDatas.addAll(data);
@@ -43,8 +45,11 @@ public abstract class BaseRecyclerAdapter<T, VH extends BaseRecyclerAdapter.View
     public VH onCreateViewHolder(ViewGroup parent, int viewType) {
         VH vh = onBaseCreateViewHolder(parent, viewType);
         ItemClickListener itemClickListener = new ItemClickListener();
+        LongItemClickListener longItemClickListener = new LongItemClickListener();
+        vh.itemView.setOnLongClickListener(longItemClickListener);
         vh.itemView.setOnClickListener(itemClickListener);
         vh.itemClickListener = itemClickListener;
+        vh.longItemClickListener = longItemClickListener;
         return vh;
     }
 
@@ -53,6 +58,9 @@ public abstract class BaseRecyclerAdapter<T, VH extends BaseRecyclerAdapter.View
     @Override
     public void onBindViewHolder(VH holder, int position) {
         holder.itemClickListener.position = position;
+        holder.itemClickListener.viewHolder = holder;
+        holder.longItemClickListener.position = position;
+        holder.longItemClickListener.viewHolder = holder;
         onBaseBindViewHolder(holder, position);
     }
 
@@ -62,18 +70,36 @@ public abstract class BaseRecyclerAdapter<T, VH extends BaseRecyclerAdapter.View
     }
 
     private ItemSelectListener itemSelectListener;
+    private ItemLongSelectListener itemLongSelectListener;
 
-    public interface ItemSelectListener {
-        public void onSelect(int position);
+    public static interface ItemLongSelectListener {
+        public void onSelect(RecyclerView.ViewHolder viewHolder, int position);
+    }
+
+    public static interface ItemSelectListener {
+        public void onSelect(RecyclerView.ViewHolder viewHolder, int position);
+    }
+
+    class LongItemClickListener implements View.OnLongClickListener {
+        public int position;
+        public ViewHolder viewHolder;
+
+        @Override
+        public boolean onLongClick(View view) {
+            if (itemLongSelectListener != null)
+                itemLongSelectListener.onSelect(viewHolder, position);
+            return false;
+        }
     }
 
     class ItemClickListener implements View.OnClickListener {
         public int position;
+        public ViewHolder viewHolder;
 
         @Override
         public void onClick(View v) {
             if (itemSelectListener != null) {
-                itemSelectListener.onSelect(position);
+                itemSelectListener.onSelect(viewHolder, position);
             }
 
         }
@@ -81,10 +107,19 @@ public abstract class BaseRecyclerAdapter<T, VH extends BaseRecyclerAdapter.View
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ItemClickListener itemClickListener;
+        public LongItemClickListener longItemClickListener;
 
         public ViewHolder(View itemView) {
             super(itemView);
         }
+    }
+
+    public ItemLongSelectListener getItemLongSelectListener() {
+        return itemLongSelectListener;
+    }
+
+    public void setItemLongSelectListener(ItemLongSelectListener itemLongSelectListener) {
+        this.itemLongSelectListener = itemLongSelectListener;
     }
 
     public ItemSelectListener getItemSelectListener() {
