@@ -1,1 +1,1 @@
-include ':app', ':myapplication', ':app_v7', ':BindLibrary'
+include ':app', ':BindLibrary', ':BindLearn', ':CoreLibrary'
